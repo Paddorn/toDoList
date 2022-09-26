@@ -1,22 +1,16 @@
 //jshint esversion:6
-
 const bodyParser= require("body-parser");
 const express=require('express');
 const https = require('https');
 const date = require(__dirname + "/date.js");
-
 const app=express();
 const port=3000;
-
 const items = [];
 const workItems =[];
 
 app.set('view engine', 'ejs');
-
 app.use(bodyParser.urlencoded({extended: true}));
-
 app.use(express.static("public"))
-
 app.get('/', (req, res) => {
 
    const day = date.getDay();
@@ -40,10 +34,8 @@ app.post('/', (req, res) => {
 app.get("/work", (req,res) => {
     res.render('list', {listTitle: "Work", newListItems: workItems});
 });
-
 app.get("/about", (req,res) => {
-    res.render('about');
-    
+    res.render('about');    
 });
 
 app.post("/work", (req, res) => {
